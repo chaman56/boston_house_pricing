@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
+  <title>Boston Housing modal</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
@@ -18,6 +18,7 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
+      <h3>Input the values one by one.</h3>
       <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
     	<input type="text" name="ZN" placeholder="ZN" required="required" /><br>
         <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
@@ -32,9 +33,14 @@
         <input type="text" name="B" placeholder="B" required="required" /><br>
         <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
 
-       
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        <button type="submit" class="btn">Predict</button>
+    </form>
+    <br><br>
+    <form action="{{ url_for('predict_')}}"method="post">
+      <h3>Input all the values at once.</h3>
+      <input type="text" name="values" placeholder="Enter values separated by space..." class="input" required>
+      <br><br>
+      <button type="submit" class="btn">Predict</button>
     </form>
 
    <br>
@@ -43,6 +49,20 @@
    
  </div>
  {{prediction_text}}
+
+ <style>
+  .input{
+    width: 300px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  .btn{
+    padding: 8px 15px;
+    margin: 5px 10px;
+    background: beige;
+  }
+ </style>
 
 </body>
 </html>
